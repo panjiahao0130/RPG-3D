@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d3969ee8a6659a4ab6d35a141654df3, type: 3}
+  m_Name: FootmanDialogue_Start
+  m_EditorClassIdentifier: 
+  dialoguePieces:
+  - pieceID: Piece01
+    image: {fileID: 21300000, guid: 7275d6b362f550a4ab5fd67598fd91e8, type: 3}
+    text: "\u6211\u88AB\u6253\u4E86\uFF0C\u6211\u88AB\u4E00\u7FA4\u602A\u517D\u6253\u4E86\uFF0C\u4F60\u53EF\u4EE5\u53BB\u5E2E\u6211\u6253\u56DE\u6765\u5417"
+    questData: {fileID: 0}
+    dialogueOptions:
+    - text: "\u5B83\u4EEC\u662F\u8C01"
+      targetID: Piece02
+      takeQuest: 1
+    - text: "\u54E6\uFF0C\u5173\u6211\u5C41\u4E8B"
+      targetID: 
+      takeQuest: 0
+  - pieceID: Piece02
+    image: {fileID: 21300000, guid: 7275d6b362f550a4ab5fd67598fd91e8, type: 3}
+    text: "\u5B83\u4EEC\u662F\u4E00\u4E2A\u5927\u77F3\u5934\uFF0C\u4E00\u4E2A\u7EFF\u8272\u7684\u602A\u517D\uFF0C\u51E0\u5768\u5927\u4FBF\uFF0C\u8FD8\u6709\u51E0\u4E2A\u5E26\u523A\u7684\u84DD\u8272\u4E4C\u9F9F"
+    questData: {fileID: 11400000, guid: c8efceafc43ba7541b5838ebe73d7c0d, type: 2}
+    dialogueOptions:
+    - text: "\u4EA4\u7ED9\u6211\u5427"
+      targetID: Piece03
+      takeQuest: 1
+    - text: "\u6253\u4E0D\u8FC7\uFF0C\u4E0D\u6253\u4E86"
+      targetID: 
+      takeQuest: 0
+  - pieceID: Piece03
+    image: {fileID: 21300000, guid: 7275d6b362f550a4ab5fd67598fd91e8, type: 3}
+    text: "\u6253\u5B8C\u4E86\uFF0C\u6211\u4F1A\u628A\u6211\u7956\u4F20\u7684\u5927\u4FDD\u5065\u7ED9\u4F60"
+    questData: {fileID: 0}
+    dialogueOptions: []

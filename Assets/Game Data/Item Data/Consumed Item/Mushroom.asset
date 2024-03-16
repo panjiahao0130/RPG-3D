@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65328131ab8ddf04e8dd78933b1b930d, type: 3}
+  m_Name: Mushroom
+  m_EditorClassIdentifier: 
+  itemType: 0
+  itemName: "\u7EA2\u8611\u83C7"
+  itemAmount: 1
+  itemIcon: {fileID: 21300000, guid: f48eaaf01f4a1704fab840339869305f, type: 3}
+  description: "\u7EA2\u8272\u7684\u5927\u8611\u83C7\uFF0C\u98DF\u7528\u53EF\u6062\u590D\u4E00\u5B9A\u7684\u8840\u91CF\n\u7EA2\u8272\u7684\u5927\u8611\u83C7\uFF0C\u98DF\u7528\u53EF\u6062\u590D\u4E00\u5B9A\u7684\u8840\u91CF\n\u7EA2\u8272\u7684\u5927\u8611\u83C7\uFF0C\u98DF\u7528\u53EF\u6062\u590D\u4E00\u5B9A\u7684\u8840\u91CF"
+  stackable: 1
+  usableItemData: {fileID: 11400000, guid: 25e7be8c36805ec4193c30f69852ee62, type: 2}
+  weaponPrefab: {fileID: 0}
+  weaponData: {fileID: 0}
+  weaponAnimator: {fileID: 0}

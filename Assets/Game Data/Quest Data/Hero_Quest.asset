@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d18ef9d68ba91147b2a76056f4dcc56, type: 3}
+  m_Name: Hero_Quest
+  m_EditorClassIdentifier: 
+  questName: "\u627E\u70B9\u8611\u83C7"
+  questDescription: "\u7ED9\u5927\u54E5\u627E\u70B9\u8611\u83C7"
+  isQuestStarted: 0
+  isQuestComplete: 0
+  isQuestFinished: 0
+  questRequires:
+  - requireName: "\u7EA2\u8611\u83C7"
+    requireAmount: 2
+    currentAmount: 0
+  questRewards:
+  - itemData: {fileID: 11400000, guid: 66165334a48aa3b43a24a27ad257d497, type: 2}
+    amount: 1
+  - itemData: {fileID: 11400000, guid: d07d257e01bce774ca8c0cceb249b00d, type: 2}
+    amount: -2
