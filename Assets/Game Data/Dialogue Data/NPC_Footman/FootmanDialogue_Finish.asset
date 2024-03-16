@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d3969ee8a6659a4ab6d35a141654df3, type: 3}
+  m_Name: FootmanDialogue_Finish
+  m_EditorClassIdentifier: 
+  dialoguePieces:
+  - pieceID: Piece01
+    image: {fileID: 21300000, guid: 7275d6b362f550a4ab5fd67598fd91e8, type: 3}
+    text: "\u8FD9\u4E16\u754C\u8FD8\u6709\u5F88\u591A\u5371\u9669\u7684\u751F\u7269\uFF0C\u542C\u8BF4\u5728\u5927\u9646\u7684\u67D0\u4E2A\u89D2\u843D\u6709\u4E00\u53EA\u6076\u9F99\uFF0C\u5F53\u4F60\u89C9\u5F97\u8DB3\u591F\u5F3A\u5927\uFF0C\u53EF\u4EE5\u53BB\u6311\u6218\u5B83"
+    questData: {fileID: 0}
+    dialogueOptions: []

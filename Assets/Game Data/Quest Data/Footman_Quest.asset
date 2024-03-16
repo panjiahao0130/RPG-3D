@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d18ef9d68ba91147b2a76056f4dcc56, type: 3}
+  m_Name: Footman_Quest
+  m_EditorClassIdentifier: 
+  questName: "\u6D88\u706D\u6363\u4E71\u5206\u5B50"
+  questDescription: "\u5E2E\u52A9\u53EF\u601C\u7537\u4EC6\u53BB\u6740\u51E0\u4E2A\u5C0F\u602A\u517D\uFF0C"
+  isQuestStarted: 0
+  isQuestComplete: 0
+  isQuestFinished: 0
+  questRequires:
+  - requireName: "\u53F2\u83B1\u59C6"
+    requireAmount: 10
+    currentAmount: 0
+  - requireName: "\u9F99\u9F9F"
+    requireAmount: 5
+    currentAmount: 0
+  - requireName: "\u7EFF\u8272\u517D\u4EBA"
+    requireAmount: 2
+    currentAmount: 0
+  - requireName: "\u77F3\u5934\u4EBA"
+    requireAmount: 1
+    currentAmount: 0
+  questRewards:
+  - itemData: {fileID: 11400000, guid: 283b2fbfbe82b774aba7a1a16cdcba0f, type: 2}
+    amount: 1

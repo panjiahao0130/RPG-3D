@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d3969ee8a6659a4ab6d35a141654df3, type: 3}
+  m_Name: HeroDialogue_Complete
+  m_EditorClassIdentifier: 
+  dialoguePieces:
+  - pieceID: Piece01
+    image: {fileID: 21300000, guid: f26fa8880b3aeef4b8516c82dc12f2a5, type: 3}
+    text: "\u8FD9\u662F\u7ED9\u4F60\u7684\u5956\u52B1"
+    questData: {fileID: 11400000, guid: a7756d94649773b42b964fc2b1c0c352, type: 2}
+    dialogueOptions:
+    - text: "\u8C22\u8C22"
+      targetID: 
+      takeQuest: 1

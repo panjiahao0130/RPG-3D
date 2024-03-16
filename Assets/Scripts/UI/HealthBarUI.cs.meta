@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 4eddbd0fc55015e41a9eca3601efed95
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - barHolderPrefab: {fileID: 4530384795793964805, guid: f2f55ea9d7a18a14286490244224b89d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
