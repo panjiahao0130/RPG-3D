@@ -61,13 +61,14 @@ public class SceneController : Singleton<SceneController>,IEndGameObserver
             SaveManager.Instance.SavePlayerData();
             
             //切换场景后装备武器到手上，切换武器动画
-            var equipmentsData = InventoryManager.Instance.equipmentData.inventoryItems;
-            foreach (var item in equipmentsData)
+            var mainWeaponData = InventoryManager.Instance.equipmentData.inventoryItems[0].itemData;
+            if (mainWeaponData!=null)
             {
-                if (item.itemData!=null)
+                GameManager.Instance.playerStats.EquipMainWeapon(mainWeaponData);
+                var secondaryWeaponData = InventoryManager.Instance.equipmentData.inventoryItems[1].itemData;
+                if (secondaryWeaponData!=null)
                 {
-                    GameManager.Instance.playerStats.EquipMainWeapon(item.itemData);
-
+                    GameManager.Instance.playerStats.EquipSecondaryWeapon(secondaryWeaponData);
                 }
             }
         }

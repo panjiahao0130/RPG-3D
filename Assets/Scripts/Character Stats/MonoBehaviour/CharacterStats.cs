@@ -15,11 +15,12 @@ public class CharacterStats : MonoBehaviour
     public CharacterData_SO characterData;
     //模板数据 怪物要设置这个模板数据 不然所有的每个种类怪物共用一个数据 会一刀死
     public CharacterData_SO templateData;
-    //基础攻击数据
+    //攻击数据,一直在变 然后保存在json里
     public AttackData_SO attackData; 
     //基础攻击数据模板
     public AttackData_SO templateAttackData;
-    private AttackData_SO basaAttackData;
+    
+    public AttackData_SO baseAttackData;
     //基础的动画
     private RuntimeAnimatorController baseAnimator;
 
@@ -32,8 +33,8 @@ public class CharacterStats : MonoBehaviour
 
         if (templateAttackData!=null)
         {
-            attackData = Instantiate(templateAttackData);
-            basaAttackData = Instantiate(attackData);
+            baseAttackData = Instantiate(templateAttackData);
+            attackData = Instantiate(baseAttackData);
         }
         //runtimeAnimatorController就是一开始的animator controller里的动画
         baseAnimator = GetComponent<Animator>().runtimeAnimatorController;
@@ -139,7 +140,9 @@ public class CharacterStats : MonoBehaviour
         {
             //实例化武器
             Instantiate(mainWeapon.weaponPrefab, mainWeaponSlot);
-            //更新武器数据
+            // 先调基础的数据
+            attackData.ApplyBaseAttackData(baseAttackData);
+            //再调装备武器的数据 
             attackData.ApplyWeaponData(mainWeapon.weaponData);
             //切换成装备武器的动画
             //todo 动画要改
@@ -160,7 +163,7 @@ public class CharacterStats : MonoBehaviour
                 Destroy(mainWeaponSlot.transform.GetChild(i).gameObject);
             }
         }
-        attackData.ApplyWeaponData(basaAttackData);
+        attackData.ApplyBaseAttackData(baseAttackData);
         //切换成空手的动画
         GetComponent<Animator>().runtimeAnimatorController = baseAnimator;
     }
@@ -220,6 +223,16 @@ public class CharacterStats : MonoBehaviour
     public void ApplyHealth(int amount)
     {
         CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);
+    }
+
+    public void UpdateAttackData()
+    {
+        attackData.ApplyBaseAttackData(baseAttackData);
+        var mainWeaponData = InventoryManager.Instance.equipmentData.inventoryItems[0].itemData;
+        if (mainWeaponData!=null)
+        {
+            attackData.ApplyWeaponData(mainWeaponData.weaponData);
+        }
     }
 
     #endregion

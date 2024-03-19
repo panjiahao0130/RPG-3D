@@ -20,8 +20,6 @@ public class ItemTooltip : MonoBehaviour
     private void OnEnable()
     {
         UpdatePosition();
-        //强制立即重建布局 用于解决ToolTip无法快速适配
-        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
     private void Update()
@@ -31,6 +29,8 @@ public class ItemTooltip : MonoBehaviour
 
     private void UpdatePosition()
     {
+        //强制立即重建布局 用于解决ToolTip无法快速适配
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
         Vector3 mousePos= Input.mousePosition;
         Vector3[] corners = new Vector3[4];
         //将四个点的坐标放到corner数组中

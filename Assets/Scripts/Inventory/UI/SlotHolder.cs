@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// 槽位类型
@@ -115,7 +116,7 @@ public class SlotHolder : MonoBehaviour,IPointerClickHandler,IPointerEnterHandle
             if (_itemUI.GetItemData())
             {
                 InventoryManager.Instance.tooltip.SetItemTooltips(_itemUI.GetItemData());
-                InventoryManager.Instance.tooltip.gameObject.SetActive(true); 
+                InventoryManager.Instance.tooltip.gameObject.SetActive(true);
             }
         }
     }
