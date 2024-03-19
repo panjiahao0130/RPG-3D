@@ -35,7 +35,7 @@ public class InventoryData_SO : ScriptableObject
             if (inventoryItems[i].itemData==null)
             {
                 inventoryItems[i].itemData = newItemData;
-                inventoryItems[i].amount += amount;
+                inventoryItems[i].amount = amount;
                 return;
             }
         }
@@ -55,7 +55,7 @@ public class InventoryData_SO : ScriptableObject
             if (inventoryItems[0].itemData==null)
             {
                 inventoryItems[0].itemData = newItemData;
-                inventoryItems[0].amount += amount;
+                inventoryItems[0].amount = amount;
                 return true;
             }
         }
@@ -69,62 +69,11 @@ public class InventoryData_SO : ScriptableObject
             if (inventoryItems[1].itemData==null)
             {
                 inventoryItems[1].itemData = newItemData;
-                inventoryItems[1].amount += amount;
+                inventoryItems[1].amount = amount;
                 return true;
             }
         }
         return false;
-    }
-    /// <summary>
-    /// 是否有武器在某个武器槽位
-    /// </summary>
-    /// <param name="newItemData"></param>
-    /// <param name="type"></param>
-    /// <returns></returns>
-    public bool HasWeaponInSlot(ItemData_SO newItemData,ItemType type)//武器和盾牌的数量默认都为1
-    {
-        if (type==ItemType.MainWeapon)
-        {
-            if (inventoryItems[0].itemData!=null)
-            {
-                return true;
-            }
-        }
-        else if (type==ItemType.SecondaryWeapon)
-        {
-            if (inventoryItems[0].itemData==null)
-            {
-                return true;
-            }
-            if (inventoryItems[1].itemData!=null)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    /// <summary>
-    /// 交换武器数据
-    /// </summary>
-    /// <param name="itemData"></param>
-    /// <returns></returns>
-    public ItemData_SO SwapItem(ItemData_SO itemData)
-    {
-        if (itemData.itemType==ItemType.MainWeapon)
-        {
-            var targetItem = inventoryItems[0].itemData;
-            InventoryManager.Instance.equipmentData.inventoryItems[0].itemData = itemData;
-            return targetItem;
-        }
-        else if (itemData.itemType==ItemType.SecondaryWeapon)
-        {
-            var targetItem = inventoryItems[1].itemData;
-            InventoryManager.Instance.equipmentData.inventoryItems[1].itemData = itemData;
-            return targetItem;
-        }
-
-        return null;
-
     }
 }
 [Serializable]

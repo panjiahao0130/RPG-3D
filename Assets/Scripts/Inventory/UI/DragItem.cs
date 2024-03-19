@@ -61,6 +61,19 @@ public class DragItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
                                     if (itemData == null)
                                     {
                                         GameManager.Instance.playerStats.UnEquipMainWeapon();
+                                        //卸载主武器的时候同时卸载副武器
+                                        var secondaryEquipment = InventoryManager.Instance.equipmentData.inventoryItems[1].itemData;
+                                        if (secondaryEquipment!=null)
+                                        {
+                                            //将副武器数据添加到背包处
+                                            InventoryManager.Instance.bagData.AddItem(secondaryEquipment,secondaryEquipment.itemAmount);
+                                            InventoryManager.Instance.equipmentData.inventoryItems[1].itemData = null;
+                                            //刷新装备栏UI和背包UI
+                                            InventoryManager.Instance.equipmentUI.RefreshUI();
+                                            InventoryManager.Instance.bagUI.RefreshUI();
+                                            //卸载副武器
+                                            GameManager.Instance.playerStats.UnEquipSecondaryWeapon();
+                                        }
                                     }
                                     else
                                     {
@@ -94,6 +107,10 @@ public class DragItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHan
                         case SlotType.SecondaryWeapon:
                             if (currentItemUI.inventoryData.inventoryItems[currentItemUI.Index].itemData.itemType==ItemType.SecondaryWeapon)
                             {
+                                if (InventoryManager.Instance.equipmentData.inventoryItems[0].itemData==null)
+                                {
+                                    break;
+                                }
                                 SwapItem();
                                 GameManager.Instance.playerStats.ChangeSecondaryWeapon(targetHolder._itemUI.GetItemData());
                             }

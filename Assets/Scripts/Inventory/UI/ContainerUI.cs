@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ContrainerUI : MonoBehaviour
+public class ContainerUI : MonoBehaviour
 {
     public SlotHolder[] slotHolders;
 

@@ -28,9 +28,9 @@ public class InventoryManager : Singleton<InventoryManager>
     public InventoryData_SO equipmentTemplate;
 
     [Header("Containers")] //容器UI
-    public ContrainerUI bagUI;
-    public ContrainerUI actionBarUI;
-    public ContrainerUI equipmentUI;
+    public ContainerUI bagUI;
+    public ContainerUI actionBarUI;
+    public ContainerUI equipmentUI;
 
     [Header("DragCanvas")] 
     public Canvas dragCanvas;
