@@ -42,6 +42,7 @@ public class InventoryManager : Singleton<InventoryManager>
     [Header("Stats Text")] 
     public TextMeshProUGUI healthTxt;
     public TextMeshProUGUI attackTxt;
+    public TextMeshProUGUI defenseTxt;
     
     [Header("ItemToolTip")] 
     public ItemTooltip tooltip;
@@ -78,14 +79,15 @@ public class InventoryManager : Singleton<InventoryManager>
 
         if (GameManager.Instance.playerStats!=null)
         {
-            UpdateStatsText(GameManager.Instance.playerStats.CurrentHealth,GameManager.Instance.playerStats.attackData.minDamage,GameManager.Instance.playerStats.attackData.maxDamage);
+            UpdateStatsText(GameManager.Instance.playerStats.CurrentHealth,GameManager.Instance.playerStats.attackData.minDamage,GameManager.Instance.playerStats.attackData.maxDamage,GameManager.Instance.playerStats.CurrentDefence);
         }
     }
 
-    private void UpdateStatsText(int health,int min,int max)
+    private void UpdateStatsText(int health,int min,int max,int defense)
     {
         healthTxt.text = health.ToString();
         attackTxt.text = min + " - " + max;
+        defenseTxt.text = defense.ToString();
     }
 
     #region 检查拖拽物品是否在每一个 Slot范围内

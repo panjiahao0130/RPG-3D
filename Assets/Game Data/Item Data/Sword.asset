@@ -19,6 +19,4 @@ MonoBehaviour:
   description: "\u8FD9\u662F\u4E00\u628A\u5E05\u6C14\u7684\u5C0F\u4FDD\u5065\uFF0C\u53EF\u4EE5\u4E3A\u7A7F\u6234\u8005\u63D0\u4F9B\u4E00\u4E9B\u52A0\u6210\n\u589E\u52A0<color=#00FF06>6-11</color>\u70B9\u7684\u653B\u51FB\u52A0\u6210\n\u589E\u52A0<color=#00FF06>30%</color>\u7684\u66B4\u51FB\u4F24\u5BB3\n\u63D0\u5347<color=#00FF06>10%</color>\u7684\u66B4\u51FB\u7387\n\u4F46\u76F8\u5E94\u7684\u653B\u51FB\u901F\u5EA6\u4F1A\u6709\u6240\u964D\u4F4E"
   stackable: 0
   usableItemData: {fileID: 0}
-  weaponPrefab: {fileID: 980554700229870653, guid: 3dc2b8db2e6fa544daeca199016c1757, type: 3}
   weaponData: {fileID: 11400000, guid: ec0160871a96a1840bd59e29f9684fa0, type: 2}
-  weaponAnimator: {fileID: 22100000, guid: 7c1e198c5d4f685499c3c33eb7a1c92c, type: 2}

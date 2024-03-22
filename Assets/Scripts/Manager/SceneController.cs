@@ -61,14 +61,14 @@ public class SceneController : Singleton<SceneController>,IEndGameObserver
             SaveManager.Instance.SavePlayerData();
             
             //切换场景后装备武器到手上，切换武器动画
-            var mainWeaponData = InventoryManager.Instance.equipmentData.inventoryItems[0].itemData;
+            var mainWeaponData = InventoryManager.Instance.equipmentData.inventoryItems[0].itemData.weaponData;
             if (mainWeaponData!=null)
             {
                 GameManager.Instance.playerStats.EquipMainWeapon(mainWeaponData);
                 var secondaryWeaponData = InventoryManager.Instance.equipmentData.inventoryItems[1].itemData;
                 if (secondaryWeaponData!=null)
                 {
-                    GameManager.Instance.playerStats.EquipSecondaryWeapon(secondaryWeaponData);
+                    GameManager.Instance.playerStats.EquipSecondaryWeapon(secondaryWeaponData.weaponData); 
                 }
             }
         }
@@ -134,8 +134,7 @@ public class SceneController : Singleton<SceneController>,IEndGameObserver
             {
                 if (item.itemData!=null)
                 {
-                    GameManager.Instance.playerStats.EquipMainWeapon(item.itemData);
-
+                   GameManager.Instance.playerStats.EquipMainWeapon(item.itemData.weaponData);
                 }
             }
             //切换场景后保存角色数据 数据中包括当前场景名称

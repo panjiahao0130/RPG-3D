@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: ShieldData
   m_EditorClassIdentifier: 
   weaponType: 0
+  weaponPrimaryOrSecondary: 1
+  weaponPrefab: {fileID: 8866016582830636879, guid: bf90214055ea7a647aa80747aa37512c, type: 3}
+  weaponAnimator: {fileID: 0}
   attackRange: 0
   skillRange: 0
   coolDown: 0
@@ -20,6 +23,6 @@ MonoBehaviour:
   maxDamage: 0
   criticalMultiplier: 0
   criticalChange: 0
-  defense: 0
-  extraLife: 0
-  everyFiveSecondsRecovery: 0
+  defense: 5
+  extraLife: 10
+  everyFiveSecondsRecovery: 1

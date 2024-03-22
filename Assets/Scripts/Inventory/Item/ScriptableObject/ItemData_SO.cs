@@ -36,11 +36,12 @@ public class ItemData_SO : ScriptableObject
     public UsableItemData_SO usableItemData;
     [Header("Weapon")] 
     //武器的预制体
-    public GameObject weaponPrefab;
+    //public GameObject weaponPrefab;
 
-    //武器的攻击数据
-    public AttackData_SO weaponData;
+    //武器数据
+    public WeaponData_SO weaponData;
+    
     //装备武器的动画
-    public AnimatorOverrideController weaponAnimator;
+    //public AnimatorOverrideController weaponAnimator;
 
 }
