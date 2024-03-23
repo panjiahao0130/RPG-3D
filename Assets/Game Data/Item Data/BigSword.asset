@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65328131ab8ddf04e8dd78933b1b930d, type: 3}
-  m_Name: SwordBig
+  m_Name: BigSword
   m_EditorClassIdentifier: 
   itemType: 1
   itemName: "\u5927\u4FDD\u5065"
@@ -19,6 +19,4 @@ MonoBehaviour:
   description: "\u8FD9\u53EF\u662F\u4E00\u628A\u5F88\u725B\u903C\u7684\u5251\u54E6\uFF01"
   stackable: 0
   usableItemData: {fileID: 0}
-  weaponPrefab: {fileID: 980554700229870653, guid: 6d5a89a225ff3f846a9a0a7a84777e90, type: 3}
-  weaponData: {fileID: 11400000, guid: ec0160871a96a1840bd59e29f9684fa0, type: 2}
-  weaponAnimator: {fileID: 22100000, guid: 7c1e198c5d4f685499c3c33eb7a1c92c, type: 2}
+  weaponData: {fileID: 11400000, guid: fe09cfeae648283428ff4f38d3938f94, type: 2}

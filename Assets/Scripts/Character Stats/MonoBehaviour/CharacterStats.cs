@@ -11,16 +11,20 @@ public class CharacterStats : MonoBehaviour
     /// 攻击时更新生命值栏
     /// </summary>
     public event Action<int, int> updateHealthBarOnAttack;
-    //角色数据 
+    //角色数据 一直会变
     public CharacterData_SO characterData;
+    //角色基础数据，不包括装备效果
+    public CharacterData_SO baseCharacterData;
     //模板数据 怪物要设置这个模板数据 不然所有的每个种类怪物共用一个数据 会一刀死
     public CharacterData_SO templateData;
+    
     //攻击数据,一直在变 然后保存在json里
     public AttackData_SO attackData; 
+    //角色攻击数据，没有武器的状态
+    public AttackData_SO baseAttackData;
     //基础攻击数据模板
     public AttackData_SO templateAttackData;
     
-    public AttackData_SO baseAttackData;
     //基础的动画
     private RuntimeAnimatorController baseAnimator;
 
@@ -28,7 +32,8 @@ public class CharacterStats : MonoBehaviour
     {
         if (templateData!=null)
         {
-            characterData = Instantiate(templateData);
+            baseCharacterData = Instantiate(templateData);
+            characterData = Instantiate(baseCharacterData);
         }
 
         if (templateAttackData!=null)
@@ -69,6 +74,16 @@ public class CharacterStats : MonoBehaviour
     {
         get { if (characterData!=null) return characterData.currentDefence; return 0; }
         set { characterData.currentDefence = value; }
+    } 
+    public int EveryFiveSecondsRecovery
+    {
+        get { if (characterData!=null) return characterData.everyFiveSecondsRecovery; return 0; }
+        set { characterData.everyFiveSecondsRecovery = value; }
+    }
+    public int ExtraLife
+    {
+        get { if (characterData!=null) return characterData.extraLife; return 0; }
+        set { characterData.extraLife = value; }
     }
     #endregion
 
@@ -95,6 +110,7 @@ public class CharacterStats : MonoBehaviour
         if (CurrentHealth<=0)
         {
              attacker.characterData.UpdateExp(characterData.killPoint);
+             attacker.baseCharacterData.UpdateExp(characterData.killPoint);
         }
         
     }
@@ -111,6 +127,7 @@ public class CharacterStats : MonoBehaviour
         if (CurrentHealth<=0)
         {
             GameManager.Instance.playerStats.characterData.UpdateExp(characterData.killPoint);
+            GameManager.Instance.playerStats.baseCharacterData.UpdateExp(characterData.killPoint);
         }
     }
 
@@ -133,20 +150,31 @@ public class CharacterStats : MonoBehaviour
     /// <summary>
     /// 装备主武器 实例化武器到手上，更新武器数据，切换动画
     /// </summary>
-    /// <param name="mainWeapon"></param>
-    public void EquipMainWeapon(ItemData_SO mainWeapon)
+    /// <param name="weaponData"></param>
+    public void EquipMainWeapon(WeaponData_SO weaponData)
     {
-        if (mainWeapon!=null)
+        if (weaponData!=null)
         {
-            //实例化武器
-            Instantiate(mainWeapon.weaponPrefab, mainWeaponSlot);
+            //实例化主武器武器
+            Instantiate(weaponData.weaponPrefab, mainWeaponSlot);
             // 先调基础的数据
             attackData.ApplyBaseAttackData(baseAttackData);
             //再调装备武器的数据 
-            attackData.ApplyWeaponData(mainWeapon.weaponData);
+            attackData.ApplyWeaponAttackData(weaponData);
             //切换成装备武器的动画
-            //todo 动画要改
-            GetComponent<Animator>().runtimeAnimatorController = mainWeapon.weaponAnimator;
+            GetComponent<Animator>().runtimeAnimatorController = weaponData.weaponAnimator;
+            //根据武器类型再执行一定逻辑，如装备双手武器的同时会卸载副手武器
+            switch (weaponData.weaponType)
+            {
+                case WeaponType.OneHandedSword:
+                    break;
+                case WeaponType.TwoHandSword:
+                    UnEquipSecondaryWeaponPassively();
+                    break;
+                case WeaponType.Shield:
+                    break;
+            }
+            
         }
     }
 
@@ -166,20 +194,25 @@ public class CharacterStats : MonoBehaviour
         attackData.ApplyBaseAttackData(baseAttackData);
         //切换成空手的动画
         GetComponent<Animator>().runtimeAnimatorController = baseAnimator;
+        //被动卸载掉副手武器
+        UnEquipSecondaryWeaponPassively();
     }
+
     
+
     /// <summary>
     /// 装备副手武器 实例化武器到手上，更新武器数据
     /// </summary>
     /// <param name="secondaryWeapon"></param>
-    public void EquipSecondaryWeapon(ItemData_SO secondaryWeapon)
+    public void EquipSecondaryWeapon(WeaponData_SO secondaryWeapon)
     {
         if (secondaryWeapon!=null)
         {
             Instantiate(secondaryWeapon.weaponPrefab, secondaryWeaponSlot);
-            //更新武器数据
-            //todo 更新副武器数据 可以加一个新的Data_so
-            //attackData.ApplyWeaponData(secondaryWeapon.weaponData);
+            //先调用基础数据
+            characterData.ApplyBaseDefenseData(baseCharacterData);
+            //再调用武器数据
+            characterData.ApplyWeaponDefenseData(secondaryWeapon);
         }
     }
     
@@ -196,21 +229,41 @@ public class CharacterStats : MonoBehaviour
                 Destroy(secondaryWeaponSlot.transform.GetChild(i).gameObject);
             }
         }
+        //应用角色基础数据
+        characterData.ApplyBaseDefenseData(baseCharacterData);
     }
 
     public void ChangeMainWeapon(ItemData_SO mainWeapon)
     {
         UnEquipMainWeapon();
-        EquipMainWeapon(mainWeapon);
+        EquipMainWeapon(mainWeapon.weaponData);
     }
     
     public void ChangeSecondaryWeapon(ItemData_SO secondaryWeapon)
     {
         UnEquipSecondaryWeapon();
-        EquipSecondaryWeapon(secondaryWeapon);
+        EquipSecondaryWeapon(secondaryWeapon.weaponData);
     }
     
-    
+    /// <summary>
+    /// 被动卸载副手武器，先判断副手武器数据库有没有数据，没有则无效果
+    /// </summary>
+    private void UnEquipSecondaryWeaponPassively()
+    {
+        var secondaryEquipment = InventoryManager.Instance.equipmentData.inventoryItems[1].itemData;
+        if (secondaryEquipment != null)
+        {
+            //卸载主武器的时候同时卸载副武器
+            //将副武器数据添加到背包处
+            InventoryManager.Instance.bagData.AddItem(secondaryEquipment, secondaryEquipment.itemAmount);
+            InventoryManager.Instance.equipmentData.inventoryItems[1].itemData = null;
+            //刷新装备栏UI和背包UI
+            InventoryManager.Instance.equipmentUI.RefreshUI();
+            InventoryManager.Instance.bagUI.RefreshUI();
+            //卸载副武器
+            GameManager.Instance.playerStats.UnEquipSecondaryWeapon();
+        }
+    }
     
     #endregion
 
@@ -225,13 +278,22 @@ public class CharacterStats : MonoBehaviour
         CurrentHealth = Mathf.Min(CurrentHealth + amount, MaxHealth);
     }
 
-    public void UpdateAttackData()
+    /// <summary>
+    /// 同步装备数据，包括生命值等基础数据和攻击数据等
+    /// </summary>
+    public void ApplyEquipmentData()
     {
         attackData.ApplyBaseAttackData(baseAttackData);
+        characterData.ApplyBaseDefenseData(baseCharacterData);
         var mainWeaponData = InventoryManager.Instance.equipmentData.inventoryItems[0].itemData;
         if (mainWeaponData!=null)
         {
-            attackData.ApplyWeaponData(mainWeaponData.weaponData);
+            attackData.ApplyWeaponAttackData(mainWeaponData.weaponData);
+        }
+        var secondaryWeaponData = InventoryManager.Instance.equipmentData.inventoryItems[1].itemData;
+        if (secondaryWeaponData!=null)
+        {
+            characterData.ApplyWeaponDefenseData(secondaryWeaponData.weaponData);
         }
     }
 

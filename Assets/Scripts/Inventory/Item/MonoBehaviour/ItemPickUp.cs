@@ -16,11 +16,11 @@ public class ItemPickUp : MonoBehaviour
             {
                 if (itemData.itemType==ItemType.MainWeapon)
                 {
-                    GameManager.Instance.playerStats.EquipMainWeapon(itemData);
+                    GameManager.Instance.playerStats.EquipMainWeapon(itemData.weaponData);
                 }
                 else if (itemData.itemType==ItemType.SecondaryWeapon)
                 {
-                    GameManager.Instance.playerStats.EquipSecondaryWeapon(itemData);
+                    GameManager.Instance.playerStats.EquipSecondaryWeapon(itemData.weaponData);
                 }
                 InventoryManager.Instance.equipmentUI.RefreshUI();
             }

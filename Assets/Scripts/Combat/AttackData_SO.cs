@@ -22,10 +22,10 @@ public class AttackData_SO : ScriptableObject
     public float criticalChange;
 
     /// <summary>
-    /// 应用武器数据 一些数据直接应用 一些数据是加的 
+    /// 应用武器的攻击数据 
     /// </summary>
     /// <param name="weaponData">武器的data_so</param>
-    public void ApplyWeaponData(AttackData_SO weaponData)
+    public void ApplyWeaponAttackData(WeaponData_SO weaponData)
     {
         //攻击范围和攻击间隔直接拿武器的范围、攻击间隔作为范围和攻击间隔
         attackRange = weaponData.attackRange;

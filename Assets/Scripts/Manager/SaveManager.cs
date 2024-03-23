@@ -29,7 +29,9 @@ public class SaveManager : Singleton<SaveManager>
     /// </summary>
     public void SavePlayerData()
     {
-        //保存角色生命值等基础属性
+        //保存角色基础属性，不包括装备后的
+        Save(GameManager.Instance.playerStats.baseCharacterData,GameManager.Instance.playerStats.baseCharacterData.name);
+        //保存角色当前基础属性
         Save(GameManager.Instance.playerStats.characterData,GameManager.Instance.playerStats.characterData.name);
         //保存角色的基础baseAttack
         Save(GameManager.Instance.playerStats.baseAttackData,GameManager.Instance.playerStats.baseAttackData.name);
@@ -42,6 +44,9 @@ public class SaveManager : Singleton<SaveManager>
     /// </summary>
     public void LoadPlayerData()
     {
+        //加载角色基础属性，不包括装备后的
+        Load(GameManager.Instance.playerStats.baseCharacterData,GameManager.Instance.playerStats.baseCharacterData.name);
+        //加载角色当前基础属性
         Load(GameManager.Instance.playerStats.characterData,GameManager.Instance.playerStats.characterData.name);
         //加载角色的基础baseAttack
         Load(GameManager.Instance.playerStats.baseAttackData,GameManager.Instance.playerStats.baseAttackData.name);

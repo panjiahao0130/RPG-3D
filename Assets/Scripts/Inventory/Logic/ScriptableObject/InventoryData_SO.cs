@@ -61,11 +61,22 @@ public class InventoryData_SO : ScriptableObject
         }
         else if (newItemData.itemType==ItemType.SecondaryWeapon)
         {
+            
             if (inventoryItems[0].itemData==null)
             {
                 Debug.Log("该武器是副武器，没有主武器无法装备");
+                //todo 显示该武器是副武器，没有主武器无法装备的UI
                 return false;
             }
+            else
+            {
+                if (inventoryItems[0].itemData.weaponData.weaponType==WeaponType.TwoHandSword)
+                {
+                    Debug.Log("主武器是双手武器，不能装备副武器");
+                    return false;
+                }
+            }
+            
             if (inventoryItems[1].itemData==null)
             {
                 inventoryItems[1].itemData = newItemData;

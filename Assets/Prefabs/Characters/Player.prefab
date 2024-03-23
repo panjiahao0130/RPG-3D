@@ -837,13 +837,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2633246176307104395}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.8448837, y: -0.51666623, z: 0.054143343, w: 0.1276562}
-  m_LocalPosition: {x: -0.2027456, y: -0.3847199, z: 0.431889}
+  m_LocalRotation: {x: -0.469298, y: -0.53672004, z: -0.5204138, w: -0.46995795}
+  m_LocalPosition: {x: -0.027454998, y: -0.033494283, z: 0.012682101}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7531438943881820974}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 5605979871416297683}
+  m_LocalEulerAnglesHint: {x: -6.75, y: 90.959, z: 88.97}
 --- !u!1 &2699415898638042446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,13 +1157,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4679014118128040953}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6104669, y: 0.7223433, z: 0.24977364, w: -0.20775802}
-  m_LocalPosition: {x: -0.24284543, y: -0.3310062, z: -0.4440907}
+  m_LocalRotation: {x: -0.40866914, y: -0.63211787, z: -0.5517419, w: -0.3591621}
+  m_LocalPosition: {x: 0.038994603, y: 0.03616715, z: -0.012216805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7531438943881820974}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 3967160276164760404}
+  m_LocalEulerAnglesHint: {x: -23.827, y: 98.371, z: 86.419}
 --- !u!1 &4873143954733969527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,7 +1192,8 @@ Transform:
   m_LocalPosition: {x: -0.0431609, y: -0.0024548331, z: -0.002625452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 762360558511009684}
   m_Father: {fileID: 2436982249355384818}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4876003580025288126
@@ -2146,12 +2147,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterData: {fileID: 0}
+  baseCharacterData: {fileID: 0}
   templateData: {fileID: 11400000, guid: 945dd9bc0096b1e428e4b43fd938f819, type: 2}
   attackData: {fileID: 0}
+  baseAttackData: {fileID: 0}
   templateAttackData: {fileID: 11400000, guid: 4960aa465937b714fb5ef57dcd4a98c4, type: 2}
   isCritical: 0
-  weaponSlot: {fileID: 1988371618943438137}
-  shieldSlot: {fileID: 762360558511009684}
+  mainWeaponSlot: {fileID: 1988371618943438137}
+  secondaryWeaponSlot: {fileID: 762360558511009684}
 --- !u!54 &8759762476071453832
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2301,7 +2304,8 @@ Transform:
   m_LocalPosition: {x: 0.043161724, y: 0.0024542431, z: 0.0026255094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1988371618943438137}
   m_Father: {fileID: 4028330781921822672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8081843395971456846
@@ -2525,12 +2529,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 762360558511009684}
   - {fileID: 6759413206944992181}
   - {fileID: 4481100829236926989}
   - {fileID: 8513525246615864156}
   - {fileID: 1357140924941822156}
-  - {fileID: 1988371618943438137}
   m_Father: {fileID: 2804332514154018577}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8665323719283679850

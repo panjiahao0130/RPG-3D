@@ -5,9 +5,17 @@ using UnityEngine;
 public class WeaponData_SO : ScriptableObject
 {
     
-    [Tooltip("武器种类：单手剑，双手剑")]
+    [Tooltip("武器种类：单手剑，双手剑,盾")]
     public WeaponType weaponType;
+
+    [Tooltip("武器是主要武器还是副手武器")]
+    public WeaponPrimaryOrSecondary weaponPrimaryOrSecondary;
+
+    [Tooltip("需要在手上生成的武器预制体，用_eq后缀的预制体")]
+    public GameObject weaponPrefab;
     
+    [Tooltip("每个武器带的动画")]
+    public AnimatorOverrideController weaponAnimator;
     [Header("Attack Info")] 
     [Tooltip("普通攻击范围")]
     public float attackRange;
@@ -31,44 +39,6 @@ public class WeaponData_SO : ScriptableObject
     public int extraLife;
     [Tooltip("每五秒恢复")]
     public int everyFiveSecondsRecovery;
-
-    /// <summary>
-    /// 应用武器数据 一些数据直接应用 一些数据是加的 
-    /// </summary>
-    /// <param name="weaponData">武器的data_so</param>
-    public void ApplyWeaponData(AttackData_SO weaponData)
-    {
-        //攻击范围和攻击间隔直接拿武器的范围、攻击间隔作为范围和攻击间隔
-        attackRange = weaponData.attackRange;
-        skillRange = weaponData.skillRange;
-        coolDown = weaponData.coolDown;
-        //攻击伤害、暴击率、暴击伤害通过基础伤害加上武器伤害、暴击率、暴击伤害
-        minDamage += weaponData.minDamage;
-        maxDamage += weaponData.maxDamage;
-        criticalMultiplier += (weaponData.criticalMultiplier - 1);
-        criticalChange += weaponData.criticalChange;
-    }
+    //todo 写每五秒恢复的逻辑
     
-    /// <summary>
-    /// 应用不拿武器的攻击数值
-    /// </summary>
-    /// <param name="baseData"></param>
-    public void ApplyBaseAttackData(AttackData_SO baseData)
-    {
-        //攻击范围和攻击间隔直接拿武器的范围、攻击间隔作为范围和攻击间隔
-        attackRange = baseData.attackRange;
-        skillRange = baseData.skillRange;
-        coolDown = baseData.coolDown;
-        //攻击伤害、暴击率、暴击伤害通过基础伤害加上武器伤害、暴击率、暴击伤害
-        minDamage = baseData.minDamage;
-        maxDamage = baseData.maxDamage;
-        criticalMultiplier = baseData.criticalMultiplier ;
-        criticalChange = baseData.criticalChange;
-    }
-
-    public void ImproveAttackData(float levelMultiplier)
-    {
-        minDamage = (int)(minDamage * levelMultiplier);
-        maxDamage = (int)(maxDamage * levelMultiplier);
-    }
 }
