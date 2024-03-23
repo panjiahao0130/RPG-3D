@@ -30,7 +30,7 @@ public class WeaponData_SO : ScriptableObject
     [Tooltip("暴击伤害 1.1表示有110%的暴击伤害，武器也直接填大于1的数就行，应用到角色时会减1的")]
     public float criticalMultiplier;
     [Tooltip("暴击率")]
-    public float criticalChange;
+    public float criticalChange;   
 
     [Header("Defend Info")] 
     [Tooltip("增加的防御力")]
